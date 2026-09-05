@@ -27,10 +27,10 @@ export default async function SuccessPage({
 
   const session = await stripe.checkout.sessions.retrieve(session_id);
   const reference = session.id.slice(-8).toUpperCase();
-  const name = session.customer_details?.name?.split(" ")[0] ?? "there";
+ 
 
   return (
-    <Shell title={`Thanks, ${name}.`}>
+     <Shell title="Thanks — your order is in.">
       <p className="max-w-[55ch] leading-relaxed text-ink/80">
         Your order is confirmed and a receipt is on its way to{" "}
         {session.customer_details?.email}. It ships within two working days and
