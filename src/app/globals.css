@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* Tailwind v4 is configured in CSS, not a JS file. Anything you declare in
+   @theme becomes a utility class automatically: --color-ink gives you
+   bg-ink / text-ink / border-ink. */
+@theme {
+  --color-paper: #e7e8e4;
+  --color-ink: #191b1a;
+  --color-mid: #6e7370;
+  --color-rule: #c6c9c1;
+  --color-signal: #8a3324;
+
+  --font-display: var(--font-syne), ui-sans-serif, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Keyboard users must always be able to see where they are. */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
