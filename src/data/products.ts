@@ -1,4 +1,4 @@
-// Your catalogue. Three products means a database here would be pure overhead —
+// Your catalogue. Five products means a database here would be pure overhead —
 // this file is typed, version-controlled, and statically rendered at build time.
 //
 // Prices are in PENCE (integers). Never store money as a float: 0.1 + 0.2 !== 0.3
@@ -11,71 +11,74 @@ export type Product = {
   name: string;
   subtitle: string;
   priceInPence: number;
-  description: string;
   details: string[];
   // Leave `src` as "" and a placeholder renders. Drop real photos into
-  // /public/products/ and set the path, e.g. "/products/oxford-1.jpg"
+  // /public/products/ and set the path, e.g. "/products/nba-1.jpg"
   images: { src: string; alt: string }[];
   stock: Record<Size, number>;
 };
 
 export const products: Product[] = [
   {
-    slug: "oxford-collarless",
-    name: "Collarless Oxford",
-    subtitle: "Washed ecru",
-    priceInPence: 8500,
-    description:
-      "A band-collar oxford cut slightly long in the body. Woven in Portugal, washed twice before it reaches you, so it arrives already soft and will not shrink away from you after the first laundry.",
-    details: [
-      "100% organic cotton oxford, 140gsm",
-      "Woven and made in Portugal",
-      "Corozo buttons",
-      "Machine wash cold, hang dry",
-    ],
+    slug: "nba",
+    name: "NBA",
+    subtitle: "my boy told me he dont fw big tings, he not my boy no more",
+    priceInPence: 4500,
+    details: ["100% cotton", "Screen printed", "Machine wash cold, inside out"],
     images: [
-      { src: "", alt: "Collarless oxford shirt, front" },
-      { src: "", alt: "Collarless oxford shirt, cuff detail" },
+      { src: "", alt: "NBA tee, front" },
+      { src: "", alt: "NBA tee, back" },
     ],
-    stock: { S: 6, M: 12, L: 9, XL: 0 },
+    stock: { S: 8, M: 14, L: 12, XL: 6 },
   },
   {
-    slug: "camp-collar-poplin",
-    name: "Camp Collar Poplin",
-    subtitle: "Slate",
-    priceInPence: 7800,
-    description:
-      "An open collar and a boxy body, cut for wearing untucked. The poplin is dense enough to hold its shape through a summer but breaks in fast around the elbows and shoulders.",
-    details: [
-      "Cotton poplin, 120gsm",
-      "Made in Portugal",
-      "Boxy fit — size down if you want it close",
-      "Machine wash cold, warm iron",
-    ],
+    slug: "shaolin",
+    name: "SHAOLIN",
+    subtitle: "THE BOOK OF GOD TOLD US WE SHALL NOT PUT HANDS ON OUR BROTHERS.",
+    priceInPence: 4500,
+    details: ["100% cotton", "Screen printed", "Machine wash cold, inside out"],
     images: [
-      { src: "", alt: "Camp collar poplin shirt, front" },
-      { src: "", alt: "Camp collar poplin shirt, collar detail" },
+      { src: "", alt: "SHAOLIN tee, front" },
+      { src: "", alt: "SHAOLIN tee, back" },
     ],
-    stock: { S: 4, M: 8, L: 8, XL: 3 },
+    stock: { S: 6, M: 12, L: 10, XL: 5 },
   },
   {
-    slug: "overshirt-twill",
-    name: "Twill Overshirt",
-    subtitle: "Faded olive",
-    priceInPence: 12500,
-    description:
-      "Heavy enough to wear as a jacket for most of the year. Two patch pockets, a straight hem, and a sleeve cut wide enough to go over a jumper without bunching.",
-    details: [
-      "Cotton twill, 280gsm",
-      "Made in Portugal",
-      "Two patch pockets",
-      "Machine wash cold, hang dry",
-    ],
+    slug: "flowers",
+    name: "FLOWERS",
+    subtitle: "FLOWERS GROW IN DIRT YKWIM",
+    priceInPence: 4500,
+    details: ["100% cotton", "Screen printed", "Machine wash cold, inside out"],
     images: [
-      { src: "", alt: "Twill overshirt, front" },
-      { src: "", alt: "Twill overshirt, pocket detail" },
+      { src: "", alt: "FLOWERS tee, front" },
+      { src: "", alt: "FLOWERS tee, back" },
     ],
-    stock: { S: 3, M: 5, L: 5, XL: 2 },
+    stock: { S: 7, M: 13, L: 11, XL: 4 },
+  },
+  {
+    slug: "dxxrdxsh",
+    name: "DXXRDXSH",
+    // Replaced on the product page by the rating widget.
+    subtitle: "",
+    priceInPence: 4500,
+    details: ["100% cotton", "Screen printed", "Machine wash cold, inside out"],
+    images: [
+      { src: "", alt: "DXXRDXSH tee, front" },
+      { src: "", alt: "DXXRDXSH tee, back" },
+    ],
+    stock: { S: 9, M: 15, L: 13, XL: 7 },
+  },
+  {
+    slug: "uni",
+    name: "UNI",
+    subtitle: "WE DONT SMOKE WEED",
+    priceInPence: 4500,
+    details: ["100% cotton", "Screen printed", "Machine wash cold, inside out"],
+    images: [
+      { src: "", alt: "UNI tee, front" },
+      { src: "", alt: "UNI tee, back" },
+    ],
+    stock: { S: 5, M: 11, L: 9, XL: 3 },
   },
 ];
 
