@@ -2,14 +2,14 @@
 // to change a name, an email, or a social link.
 
 export const site = {
-  name: "Meridian",              // <- your brand name
-  tagline: "Shirts made in small runs.",
-  email: "hello@meridian.co.uk",
+  name: "NSP",              // <- your brand name
+  tagline: "NSPGOODS",
+  email: "NSPTDY@gmail.com",
   instagram: "https://instagram.com/",
   // Shown on the homepage. Set `isLive: false` before a drop opens.
   drop: {
     name: "Run 01",
     isLive: true,
-    note: "Three shirts. Cut once, then retired.",
+    note: "natural stone project aint no nigga sex penis on here NSPGOODSTDY",
   },
 } as const;
