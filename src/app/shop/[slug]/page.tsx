@@ -19,7 +19,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return { title: "Not found" };
-  return { title: product.name, description: product.description };
+  return { title: product.name, description: product.subtitle };
 }
 
 export default async function ProductPage({
@@ -51,13 +51,15 @@ export default async function ProductPage({
           <h1 className="font-display text-4xl font-extrabold leading-tight tracking-tight">
             {product.name}
           </h1>
-          <p className="mt-1 text-mid">{product.subtitle}</p>
+
+          {product.subtitle && (
+            <p className="mt-4 max-w-[45ch] font-display text-xl leading-snug">
+              {product.subtitle}
+            </p>
+          )}
+
           <p className="mt-6 font-display text-2xl">
             {formatPence(product.priceInPence)}
-          </p>
-
-          <p className="mt-6 max-w-[60ch] leading-relaxed text-ink/80">
-            {product.description}
           </p>
 
           <div className="mt-8 border-t border-rule pt-8">
