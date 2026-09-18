@@ -8,7 +8,7 @@ export const site = {
   instagram: "https://instagram.com/",
   // Shown on the homepage. Set `isLive: false` before a drop opens.
   drop: {
-    name: "Run 01",
+    name: "Season 1",
     isLive: true,
     note: "Natural Stone Project NSPGOODSTDY",
   },
