@@ -15,15 +15,14 @@ export default function HomePage() {
             {site.drop.note}
           </h1>
           <p className="mt-6 max-w-[52ch] text-mid">
-            Every tee is made to order. Nothing sits in a box waiting — yours is
-            printed once you buy it.
+            Fresh garms by young guns 
           </p>
           <div className="mt-8">
             <Link
               href="/shop"
               className="inline-block bg-ink px-7 py-4 font-display text-base font-semibold text-paper"
             >
-              See the run
+              View all
             </Link>
           </div>
         </div>
