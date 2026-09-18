@@ -10,6 +10,6 @@ export const site = {
   drop: {
     name: "Run 01",
     isLive: true,
-    note: "natural stone project NSPGOODSTDY",
+    note: "Natural Stone Project NSPGOODSTDY",
   },
 } as const;
