@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SIZES, type Product, type Size } from "@/data/products";
+import { SIZES, LEAD_TIME, type Product, type Size } from "@/data/products";
 
 // "use client" means this component ships JavaScript to the browser. Everything
 // else in this project is a server component and ships none — which is why the
@@ -11,8 +11,6 @@ export function BuyPanel({ product }: { product: Product }) {
   const [size, setSize] = useState<Size | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [message, setMessage] = useState("");
-
-  const soldOut = SIZES.every((s) => product.stock[s] === 0);
 
   async function checkout() {
     if (!size) return;
@@ -42,55 +40,32 @@ export function BuyPanel({ product }: { product: Product }) {
     }
   }
 
-  if (soldOut) {
-    return (
-      <p className="border border-signal px-4 py-3 text-sm text-signal">
-        Sold out. Join the list for the next run.
-      </p>
-    );
-  }
-
   return (
     <div>
       <fieldset>
         <legend className="mb-3 text-sm text-mid">Size</legend>
         <div className="grid grid-cols-4 gap-2">
           {SIZES.map((s) => {
-            const remaining = product.stock[s];
-            const unavailable = remaining === 0;
             const selected = size === s;
-
             return (
               <button
                 key={s}
                 type="button"
-                disabled={unavailable}
                 aria-pressed={selected}
+                aria-label={`Size ${s}`}
                 onClick={() => setSize(s)}
                 className={[
-                  "flex flex-col items-start border px-3 py-3 text-left transition-colors",
-                  unavailable
-                    ? "cursor-not-allowed border-rule text-rule"
-                    : selected
-                      ? "border-ink bg-ink text-paper"
-                      : "border-rule hover:border-ink",
+                  "flex items-center justify-center border py-4 font-display text-base font-semibold transition-colors",
+                  selected
+                    ? "border-ink bg-ink text-paper"
+                    : "border-rule hover:border-ink",
                 ].join(" ")}
               >
-                <span className="font-display text-base font-semibold">{s}</span>
-                {/* Scarcity is the story on a drop, so the number gets real size. */}
-                <span
-                  className={[
-                    "font-display text-2xl leading-none",
-                    unavailable ? "" : selected ? "" : "text-mid",
-                  ].join(" ")}
-                >
-                  {unavailable ? "—" : remaining}
-                </span>
+                {s}
               </button>
             );
           })}
         </div>
-        <p className="mt-2 text-xs text-mid">Numbers show pieces remaining.</p>
       </fieldset>
 
       <button
@@ -102,7 +77,7 @@ export function BuyPanel({ product }: { product: Product }) {
         {status === "loading"
           ? "Taking you to checkout"
           : size
-            ? "Buy now"
+            ? "Order yours"
             : "Choose a size"}
       </button>
 
@@ -112,8 +87,14 @@ export function BuyPanel({ product }: { product: Product }) {
         </p>
       )}
 
-      <p className="mt-4 text-xs text-mid">
-        Secure payment handled by Stripe. UK delivery in 2–4 working days.
+      {/* Stated loudly, not in fine print — this is what stops
+          "where is my order" emails at week three. */}
+      <p className="mt-4 border border-rule px-4 py-3 text-sm">
+        {LEAD_TIME}
+      </p>
+
+      <p className="mt-3 text-xs text-mid">
+        Secure payment handled by Stripe.
       </p>
     </div>
   );
